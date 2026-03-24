@@ -746,7 +746,6 @@ class _HeroBanner extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Container(
-      height: 260,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(28),
@@ -777,81 +776,91 @@ class _HeroBanner extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned(top: 14, right: 6, child: _HeroLayers()),
-          Positioned.fill(
-            child: Padding(
-              padding: const EdgeInsets.only(right: 124, bottom: 56),
-              child: Column(
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Stack 图层魔法实验室',
-                    style: textTheme.headlineSmall?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    '一个页面串起悬浮、重叠、绝对定位、角标、蒙层和 IndexedStack 的典型用法。',
-                    style: textTheme.bodyLarge?.copyWith(
-                      color: Colors.white.withValues(alpha: 0.88),
-                      height: 1.45,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 10,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.12),
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.12),
-                      ),
-                    ),
-                    child: Row(
+                  Expanded(
+                    child: Column(
                       mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(
-                          showLoading
-                              ? Icons.visibility_rounded
-                              : Icons.layers_rounded,
-                          color: Colors.white,
-                          size: 18,
-                        ),
-                        const SizedBox(width: 8),
                         Text(
-                          showLoading ? '全局蒙层：开启' : '全局蒙层：关闭',
-                          style: textTheme.labelLarge?.copyWith(
+                          'Stack 图层魔法实验室',
+                          style: textTheme.headlineSmall?.copyWith(
                             color: Colors.white,
-                            fontWeight: FontWeight.w700,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                        const SizedBox(height: 12),
+                        Text(
+                          '一个页面串起悬浮、重叠、绝对定位、角标、蒙层和 IndexedStack 的典型用法。',
+                          style: textTheme.bodyLarge?.copyWith(
+                            color: Colors.white.withValues(alpha: 0.88),
+                            height: 1.45,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: 0.12),
+                            borderRadius: BorderRadius.circular(16),
+                            border: Border.all(
+                              color: Colors.white.withValues(alpha: 0.12),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(
+                                showLoading
+                                    ? Icons.visibility_rounded
+                                    : Icons.layers_rounded,
+                                color: Colors.white,
+                                size: 18,
+                              ),
+                              const SizedBox(width: 8),
+                              Flexible(
+                                child: Text(
+                                  showLoading ? '全局蒙层：开启' : '全局蒙层：关闭',
+                                  style: textTheme.labelLarge?.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
                   ),
+                  const SizedBox(width: 16),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 6),
+                    child: _HeroLayers(),
+                  ),
                 ],
               ),
-            ),
-          ),
-          const Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Wrap(
-              spacing: 8,
-              runSpacing: 8,
-              children: [
-                _FeatureChip(label: '自由叠加'),
-                _FeatureChip(label: '精准定位'),
-                _FeatureChip(label: '状态保留'),
-                _FeatureChip(label: '蒙层覆盖'),
-              ],
-            ),
+              const SizedBox(height: 20),
+              const Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                children: [
+                  _FeatureChip(label: '自由叠加'),
+                  _FeatureChip(label: '精准定位'),
+                  _FeatureChip(label: '状态保留'),
+                  _FeatureChip(label: '蒙层覆盖'),
+                ],
+              ),
+            ],
           ),
         ],
       ),
@@ -1261,40 +1270,46 @@ class _PosterPositionScene extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        height: 150,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(22),
-                          gradient: const LinearGradient(
-                            colors: [Color(0xFFDDEFE8), Color(0xFFB7DACE)],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
+                      Expanded(
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(22),
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFFDDEFE8), Color(0xFFB7DACE)],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
                           ),
-                        ),
-                        child: const Center(
-                          child: Icon(
-                            Icons.watch_rounded,
-                            size: 74,
-                            color: Color(0xFF295B57),
+                          child: const Center(
+                            child: Icon(
+                              Icons.watch_rounded,
+                              size: 74,
+                              color: Color(0xFF295B57),
+                            ),
                           ),
                         ),
                       ),
-                      const SizedBox(height: 18),
+                      const SizedBox(height: 16),
                       Text(
                         'Layer Watch S',
                         style: textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.w800,
                         ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 6),
                       Text(
                         '新品角标、收藏按钮、价格说明都能压在主内容之上。',
                         style: textTheme.bodyLarge?.copyWith(
                           color: const Color(0xFF5D6666),
                           height: 1.5,
                         ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      const Spacer(),
+                      const SizedBox(height: 12),
                       Text(
                         '¥ 1,299',
                         style: textTheme.headlineSmall?.copyWith(
