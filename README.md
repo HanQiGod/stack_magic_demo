@@ -2,7 +2,7 @@
 
 一个围绕 Flutter `Stack` 组件编写的演示工程，适合作为文章配套 demo 或讲解素材。
 
-### 文章地址[]
+### 文章地址[https://mp.weixin.qq.com/s/SOPVYdGFhMa01vgTFsB8aA]
 
 ### 展示图
 ![展示图](assets/images/stack_magic_demo.gif)
